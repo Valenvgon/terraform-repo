@@ -1,11 +1,15 @@
 variable "filename" {
-    default = "pets.txt"
-    type = string
+    default = [
+        "pet.txt", 
+        "cat.txt", 
+        "dog.txt",
+        "mantisreligiosa.txt",
+        "patica.txt"
+    ]
     description= "the path of local file"
 }
 
 variable "filename1" {
-    default = "petsuno.txt"
     type = string
     description= "the path of local file"
 }
@@ -41,14 +45,14 @@ variable "content2" {
 }
 
 variable "content3" {
-    default = "I love dogs"
+    default = "I love animals"
     type = string
     description= "the content of a file"
 }
 
 variable "prefix" {
     default = ["Mr", "Mrs", "Sir"]
-    type = list
+    type = list(string)
     description= "the prefix to be set"
 }
 
@@ -62,4 +66,31 @@ variable "lenght" {
     default = "1"
     type= number
     description = "lenght of the pet name"
+}
+
+variable "file-content"{
+    type= map(string)
+    default= {
+        "pet"= "My favorite pet is Mr. Angel and Faby"
+        "dog"= "I love dogs"
+        "cat"= "I love cats"
+        "animal"= "I love animals"
+    }
+}
+
+variable "mimascota"{
+    type= object({
+      name = string
+      color= string
+      age= string 
+      food= list(string)
+      favorite_pet= bool 
+    })
+    default= {
+        name = "Kim"
+        color = "black"
+        age = "17"
+        food = [ "grass" ]           
+        favorite_pet = true
+    }
 }
